@@ -1,0 +1,56 @@
+{% extends 'SsSsBundle::layoutmember.html.twig' %}
+
+{% block content %}
+    <h1>Member Area</h1>
+	<p>Selamat datang {{ m.disname }}, berikut ini adalah daftar pesanan Anda:</p>
+<section id="cart">
+	<form>
+	<div class="twelve columns alpha omega">
+			<!-- START HEADERS-->
+			<div class="headers clearfix">
+				<div class="one columns quantity tr">
+					No
+					<p class="mobile">No</p>
+				</div>
+				<div class="two columns quantity tr">
+					Tanggal
+				</div>
+				<div class="two columns quantity tr">
+					Status Bayar
+				</div>
+				<div class="two columns quantity tr">
+					Status Konfirmasi
+				</div>
+				<div class="two columns total desktop">
+					<span>Aksi</span>
+				</div>
+			</div>
+			{% for entity in m.pesanans %}   
+			<!-- START ROW-->
+			<div class="row">
+				<div class="one columns total desktop">
+					{{ loop.index }}
+					<p class="mobile">{{ loop.index }}</p>
+				</div>
+				<div class="two columns total desktop">
+					{{ entity.createdat | date('d-m-Y') }}
+					<p class="mobile">{{ entity.createdat | date('d-m-Y') }}</p>
+				</div>
+				<div class="two columns total desktop">
+					BELUM
+					<p class="mobile">BELUM</p>
+				</div>
+				<div class="two columns total desktop">
+					BELUM
+					<p class="mobile">BELUM</p>
+				</div>
+				<div class="two columns total desktop">
+					<span>Tampilkan Detail</span>
+				</div>
+			</div>
+			<!-- END ROW-->
+			{% endfor %}
+	</div>
+	</form>
+</section>
+{% endblock %}

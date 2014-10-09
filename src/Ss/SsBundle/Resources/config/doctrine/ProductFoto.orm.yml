@@ -1,0 +1,32 @@
+Ss\SsBundle\Entity\ProductFoto:
+ type: entity
+ table: product_foto
+ repositoryClass: Ss\SsBundle\Repository\ProductFotoRepository
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  name:
+   type: string
+   length: 255
+  token:
+   type: string
+   length: 255
+   unique: true
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+ manyToOne:
+  products:
+   targetEntity: Product
+   inversedBy: fotos
+   joinColumn:
+    name: product_id
+    referencedColumnName: id
+ lifecycleCallbacks:
+  prePersist: [ setCreatedAtValue, setTokenValue ]
+  preUpdate: [ setUpdatedAtValue ]
+   

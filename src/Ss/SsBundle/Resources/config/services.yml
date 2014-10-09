@@ -1,0 +1,29 @@
+parameters:
+#    ss_ss.example.class: Ss\SsBundle\Example
+
+services:
+ ss.ss.admin.category:
+  class: Ss\SsBundle\Admin\CategoryAdmin
+  tags:
+   - { name: sonata.admin, manager_type: orm, group: SimpleShop, label: Categories }
+  arguments:
+   - ~
+   - Ss\SsBundle\Entity\Category
+   - 'SsSsBundle:CategoryAdmin'
+ ss.ss.admin.product:
+  class: Ss\SsBundle\Admin\ProductAdmin
+  tags:
+   - { name: sonata.admin, manager_type: orm, group: SimpleShop, label: Product }
+  arguments:
+   - ~
+   - Ss\SsBundle\Entity\Product
+   - 'SsSsBundle:ProductAdmin'
+ ss.ss.admin.pesanan:
+  class: Ss\SsBundle\Admin\PesananAdmin
+  tags:
+   - { name: sonata.admin, manager_type: orm, group: SimpleShop, label: Pesanan }
+  arguments:
+   - ~
+   - Ss\SsBundle\Entity\Pesanan
+   - 'SsSsBundle:PesananAdmin'
+   

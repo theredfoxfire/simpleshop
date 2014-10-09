@@ -1,0 +1,61 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content%}
+
+<!--START BREADCRUMB-->
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product', {}) }}">Home</a> —
+		<a href="{{ path('ss_cart_show', {}) }}" class="active">Keranjang</a>
+</div>
+<!--END BREADCRUMB-->
+<h1>Keranjang Ku</h1>
+<section id="cart">
+	
+	<form action="{{ path('ss_cart_update') }}" method="get">
+		<!--START CART CONTENTS-->
+		<div class="twelve columns alpha omega">
+			<!-- START HEADERS-->
+			<div class="headers clearfix">
+				<div class="six columns alpha description">
+					Deskripsi
+				</div>
+				<div class="two columns price desktop">
+					Harga
+				</div>
+				<div class="one columns quantity desktop">
+					Jumlah
+				</div>
+				<div class="two columns total desktop">
+					<span>Sub Total</span>
+				</div>
+			</div>
+			<!-- END HEADERS-->
+			Keranjang mu masih kosong, 
+		</div>
+		<!--END CART CONTENTS-->
+		<br class="clear">
+		<!--START TOTAL-->
+		<div class="twelve columns alpha omega row">
+			<div class="six columns alpha continue-shopping"><a href="{{path('ss_product',{})}}">« Lanjutkan belanja</a></div>
+			<div class="six columns omega cart total"><h2>Total tagihan: Rp 0</h2></div>
+		</div>
+		<!--END TOTAL-->
+		<br class="clear">
+		<!-- START ACTIONS -->
+		<div class="twelve columns alpha omega">
+			<div class="six columns alpha">
+				<textarea id="note" name="note" placeholder="Tambahkan catatan untuk pesanan Anda..."></textarea>
+			</div>
+			<div class="six columns omega actions">
+		 		<input id="update" name="update" value="Update" type="submit" disabled="disabled">
+			</div>
+		</div>
+		<!-- END ACTIONS <input id="checkout" name="checkout" value="Check Out" type="submit"> -->
+	</form>
+	
+</section>
+			<br class="clear">
+{% endblock %}

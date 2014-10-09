@@ -1,0 +1,7 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+
+{% block content %}
+		{% include 'SsSsBundle:Product:list.html.twig' with {'products' : products}%}
+	{% endblock %}
+

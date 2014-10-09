@@ -1,0 +1,36 @@
+Ss\SsBundle\Entity\PesananDetail:
+ type: entity
+ repositoryClass: Ss\SsBundle\Repository\PesananDetailRepository
+ table: pesanan_detail
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  qty:
+   type: integer
+  token:
+   type: string
+   length: 255
+   unique: true
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+ manyToOne:
+  pesanans:
+   targetEntity: Pesanan
+   inversedBy: details
+   joinColumn:
+    name: pesanan_id
+    referencedColumnName: id
+  products:
+   targetEntity: Product
+   inversedBy: details
+   joinColumn:
+    name: product_id
+    referencedColumnName: id
+ lifecycleCallbacks:
+  prePersist: [ setCreatedAtValue, setTokenValue ]
+  preUpdate: [ setUpdatedAtValue ]

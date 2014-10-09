@@ -1,0 +1,16 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+{% block content %}
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product') }}">Home</a> — 
+	<a href="{{ path('ss_product_search') }}" class="active">Terima Kasih</a>
+</div>
+
+<h1>Terima Kasih</h1>
+	<section class="product-grid twelve columns alpha omega">
+	 <p>Terima kasih telah melakukan pemesanan di toko kami SimpleShop.com.
+	 <br>Kami telah mengirim email ke alamat email Anda.  
+	 <br/> Silahkan cek email Anda dan lakukan konfirmasi atas pesanan Anda, dengan cara mengklik url yang ada di dalam email tersebut.</p>
+	 <p><a href="{{ path('ss_product') }}">Lanjutkan belanja</a></p>
+	</section>
+{% endblock %}

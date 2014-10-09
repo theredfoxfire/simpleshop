@@ -1,0 +1,39 @@
+Ss\SsBundle\Entity\Product:
+ constraints:
+  - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nama
+ properties:
+  nama:
+   - NotBlank: ~
+  description:
+   - NotBlank: ~
+  harga:
+   - NotBlank: ~
+  stock:
+   - NotBlank: ~
+  ongkir:
+   - NotBlank: ~
+  categories:
+   - NotBlank: ~
+  file:
+   - Image: ~
+Ss\SsBundle\Entity\Category:
+ constraints:
+  - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+ properties:
+  name:
+   - NotBlank: ~
+  gender:
+   - NotBlank: ~
+Ss\SsBundle\Entity\Orderer:
+ properties:
+  nama:
+   - NotBlank: ~
+  email:
+   - NotBlank: ~
+   - Email: ~
+  phone:
+   - NotBlank: ~
+  alamat:
+   - NotBlank: ~
+  kode_pos:
+   - NotBlank: ~

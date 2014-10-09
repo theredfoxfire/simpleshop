@@ -1,0 +1,30 @@
+ss_foto:
+    path:     /
+    defaults: { _controller: "SsSsBundle:ProductFoto:index" }
+
+ss_foto_show:
+    path:     /{id}/show
+    defaults: { _controller: "SsSsBundle:ProductFoto:show" }
+
+ss_foto_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:ProductFoto:new" }
+
+ss_foto_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:ProductFoto:create" }
+    requirements: { _method: post }
+
+ss_foto_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SsSsBundle:ProductFoto:edit" }
+
+ss_foto_update:
+    path:     /{id}/update
+    defaults: { _controller: "SsSsBundle:ProductFoto:update" }
+    requirements: { _method: post|put }
+
+ss_foto_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SsSsBundle:ProductFoto:delete" }
+    requirements: { _method: post|delete }

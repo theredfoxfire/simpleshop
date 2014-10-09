@@ -1,0 +1,166 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+{% block head %}
+{% endblock %}
+{% block content%}
+    <div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product') }}">Home</a> —
+		{% if category.gender == 1 %}
+			{% if category %}
+				{% if category.gender == 1 %}
+				<a href="{{ path('ss_category_gender', {'gender' : 'mens', 'id' : '1'}) }}">Pria</a> —
+					<a href="{{ path('ss_category_show', {'id': category.id, 'slug' : category.slug, 'gender' : 'mens', 'genid' : '1' }) }}">{{ category.name }} </a> — <a href="" class="active">{{ entity.nama }}</a>
+				{% endif %}
+			{% else %}
+			<a href="{{ path('ss_category_gender', {'gender' : 'mens', 'id' : '1'}) }}">Pria</a>
+			{% endif %}
+		{% else %}
+			{% if category %}
+				{% if category.gender == 2 %}
+				<a href="{{ path('ss_category_gender', {'gender' : 'womens', 'id' : '2'}) }}">Wanita</a> —
+					<a href="{{ path('ss_category_show', {'id': category.id, 'slug' : category.slug, 'gender' : 'womens', 'genid' : '2' }) }}">{{ category.name }} </a> — <a href="" class="active">{{ entity.nama }}</a>
+				{% endif %}
+			{% else %}
+			<a href="{{ path('ss_category_gender', {'gender' : 'womens', 'id' : '2'}) }}">Wanita</a>
+			{% endif %}
+		{% endif %}
+</div>
+
+<!--START PRODUCT-->
+<h1>{{ entity.categories.name }} - {{ entity.nama }}</h1>
+<div itemscope="" itemtype="http://schema.org/Product" class="twelve columns alpha omega">
+	<!-- START PRODUCT IMAGES-->
+	<section id="images" class="seven columns alpha">
+		<!-- START ZOOM IMAGE-->
+    
+		<img id="feature-image" class="desktop" src="{{ asset('uploads/products/zoom_') }}{{ entity.foto }}" alt="Product Image" data-zoom-image="{{ asset('uploads/products/zoom_') }}{{ entity.foto }}?v=1373479045">
+		<img class="mobile" src="{{ asset('uploads/products/grande_') }}{{ entity.foto }}" alt="{{ entity.nama }}">
+		<!-- END ZOOM IMAGE-->
+		<!-- START GALLERY-->
+		<section id="gallery">
+			<a rel="gallery" href="{{ asset('uploads/products/grande_') }}{{ entity.foto }}?v=1373479045" class="fancybox-media ">
+				<img src="{{ asset('uploads/products/mini_') }}{{ entity.foto }}" alt="{{ entity.nama }}">
+			</a>
+		</section>
+		<!-- END GALLERY-->
+	</section>
+	<!-- END PRODUCT IMAGES-->
+	<!--START BUY-->
+	<section id="buy" class="five columns omega">
+		{{ form_start(form, {'attr': {'id':'contact-form'}}) }}
+			<h1>{{ entity.nama }}</h1>
+			<h2><span class="product-price">Rp {{ entity.cost }}</span></h2>
+			<div id="product-variants" class=" hidden">
+		       <div class="selector-wrapper"><select id="product-select-option-0" data-option="option1" class="single-option-selector">
+		       <option selected="selected" value=""></option></select></div><select style="display: none;" id="product-select" name="id" class="hidden">
+		       <option selected="selected" value=""></option>
+		       </select>
+		    </div>        
+			{%if (cartqty == null) or (entity.stock == 0) %}
+				Stok: {{ entity.stock }}</br>
+				{% if (entity.stock == '0') %}
+					<input style="opacity: 1;" value="Habis Terjual" id="add" class="btn add-to-cart disabled" disabled="disabled" type="submit">	
+				{% else %}
+					<input style="opacity: 1;" value="Masukan Ke Keranjang" id="add" class="btn add-to-cart" type="submit">	
+				{% endif %}
+			{%else%}
+				Stok: {{ cartqty.stock }}</br>
+				{% if (cartqty.stock == '0') %}
+					<input style="opacity: 1;" value="Habis Terjual" id="add" class="btn add-to-cart disabled" disabled="disabled" type="submit">	
+				{% else %}
+					<input style="opacity: 1;" value="Masukan Ke Keranjang" id="add" class="btn add-to-cart" type="submit">	
+				{% endif %}
+			{%endif%}
+		{{ form_end(form) }}
+	    <!-- START SHARE-->
+	<section id="share" class="clearfix">
+	<div class="google">
+		
+		
+	</div>
+	<div class="twitter">
+		
+	</div>
+	<div class="pinterest">
+		
+	</div>
+	<div class="facebook">
+		
+	</div>
+</section>
+<!-- END SHARE-->
+		
+	</section>
+	<!--END BUY-->
+	<br class="clear">
+	
+	<!--START PRODUCT INFO-->
+	<section id="product-info">
+		
+		<ul class="tabs clearfix">
+	    	<li class="first"><a class="active" href="#tab1">Deskripsi produk</a></li>
+	    	<li><a href="#tab2">Metode pemesanan, pembayaran, dan pengiriman barang</a></li>
+	  	</ul>
+		<div id="tab1">
+			<div class="wysiwyg">
+		    <p>{{ entity.description }}.</p>
+<p>&nbsp;</p>
+			</div>
+		 </div>
+		 <div style="display: none;" id="tab2">
+		   	<div class="wysiwyg">
+		    <p>
+		    Metode pembayaran dan pengiriman produk.&nbsp;</br>
+		    Pengirimin produk yang anda beli akan kami lakukan dengan menggunakan jasa <br> pengiriman JNE.
+		    Pembayaran dapat langsung di bayarkan ke rekening kami:<br>
+		    BNI : <br>
+		    BRI : <br>
+		    Mandiri: <br>
+		    BCA : <br>
+		    atau pembayaran melalui ATM Bersama:
+		    </p>
+			</div>
+		</div>
+		
+	</section>
+	<!--END PRODUCT INFO-->
+	
+	
+		
+	
+
+	
+		<!--START PRODUCT GRID-->
+		<section id="related-products" class="product-grid twelve columns alpha omega">
+		<h2>Produk lain yang anda sukai</h2>
+
+		{% for other in others %}
+		{% if loop.index%3 == 0 %}
+		<div class="four columns omega">
+		{% elseif loop.index%2 == 0 %}
+		<div class="four columns ">
+		{% else %}
+		<div class="four columns alpha">
+		{% endif %}
+			<!---<a href="http://simpletheme.myshopify.com/collections/all-products/products/blue-ripped-jeans" id="product-1" class="animated fadeInUpBig">-->
+			<a href="{{ path('ss_product_show', {'id': other.id, 'category' : other.categories.slug, 'product' : other.namaslug }) }}">
+				<img src="{{ asset('uploads/products/index_') }}{{ other.foto }}" alt="{{ other.nama }}" class="product">
+				<h3>{{ other.nama }}</h3>
+				<h4>Rp {{ other.cost }} </h4>
+			</a>
+		</div>
+		{% if loop.index%3 == 0 %}
+		<br class="clear">
+		{% endif %}
+		{% endfor %}
+		</section>
+		<!--END PRODUCT GRID-->
+		<br class="clear">
+	
+
+</div>
+<!--END PRODUCT-->
+
+
+			<br class="clear">
+
+{% endblock %}

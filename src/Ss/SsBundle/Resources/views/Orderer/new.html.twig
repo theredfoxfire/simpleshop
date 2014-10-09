@@ -1,0 +1,86 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="twelve columns alpha omega" style="border-bottom: 1px solid #E8E8E8;">
+  <div class="row" style="border-bottom: 1px solid #E8E8E8;">
+    <h1>Anda membeli...</h1>
+    <table id="thumbs" cellpadding="0" cellspacing="0">
+      <tbody>
+      {% for entity in countcart %}   
+      {% if loop.index%6 == 1 %}
+      <tr class="desktop">
+      {% endif %}
+            <td>
+                <img src="{{ asset('uploads/products/mini_') }}{{ entity.products.foto }}" alt="{{ entity.products.nama }}" >
+				<h3 class="plisthead" title="{{ entity.products.nama }}">{{ entity.products.nama }} <br/> [{{ entity.qty }}&nbsp;x Rp {{ entity.products.cost }}]<br>Rp {{ entity.totalcost }}</h3>
+            </td>
+      {% if loop.index%6 == 0 %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% for entity in countcart %}   
+      {% if loop.index%2 == 1 %}
+      <tr class="mobile">
+      {% endif %}
+            <td>
+                <img src="{{ asset('uploads/products/mini_') }}{{ entity.products.foto }}" alt="{{ entity.products.nama }}" >
+				<h3 class="plisthead" title="{{ entity.products.nama }}">{{ entity.products.nama }} <br/> [{{ entity.qty }}&nbsp;x Rp {{ entity.products.cost }}]<br>Rp {{ entity.totalcost }}</h3>
+            </td>
+      {% if loop.index%2 == 0 %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody></table>
+  </div>
+	<br class="clear">
+			<div class="six columns alpha continue-shopping"><a href="{{path('ss_product',{})}}">« Lanjutkan belanja</a></div>
+			<div class="six columns omega cart total">
+				<h2 align="right">Ongkos kirim: Rp {{ ongkir }}</h2>
+				<h2 align="right">Total tagihan: Rp {{ bill }}</h2>
+			</div>
+	</div>
+  <br class="clear">
+    <h1>Form pemesanan:</h1>
+
+    {{ form_start(form) }}
+		{{ form_label(form.nama) }}
+		{{ form_errors(form.nama) }}
+		{{ form_widget(form.nama) }}
+		
+		{{ form_label(form.email) }}
+		{{ form_errors(form.email) }}
+		{{ form_widget(form.email) }}
+		
+		{{ form_label(form.password) }} <a href="#" onmouseover="mess()">Apa ini?</a>
+		<div id="whats"> </div>
+		{{ form_errors(form.password) }}
+		{{ form_widget(form.password) }}
+		
+		{{ form_label(form.phone) }}
+		{{ form_errors(form.phone) }}
+		{{ form_widget(form.phone) }}
+		
+		{{ form_label(form.alamat) }}
+		{{ form_errors(form.alamat) }}
+		{{ form_widget(form.alamat) }}
+		
+		{{ form_label(form.kode_pos) }}
+		{{ form_errors(form.kode_pos) }}
+		{{ form_widget(form.kode_pos, {'attr': {'onkeypress':'return harusangka(event)'}}) }}
+		<br/><br/>
+		<input id="lanjut" name="lanjut" value="Pesan" type="submit" class="btn"> &nbsp; <a href="{{ path('ss_cart_show', {}) }}">Kembali</a>
+    {{ form_end(form) }}
+
+        <ul class="record_actions">
+    <li>
+    </li>
+</ul>
+<script language="JavaScript">
+	function mess(){
+		document.getElementById("whats").innerHTML= "Kata sandi ini akan anda gunakan untuk melihat pesanan Anda,<br>seperti melakukan konfirmasi pembayaran, atau melihat status pengriman barang.<br><a href='#' onmouseover='tutup()' id='close'>Tutup</a>";
+	}
+	function tutup(){
+		document.getElementById("whats").innerHTML="";
+	}
+</script>
+{% endblock %}

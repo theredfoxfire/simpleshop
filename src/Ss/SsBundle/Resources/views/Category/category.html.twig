@@ -1,0 +1,66 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+
+{% block content %}
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product') }}">Home</a> —
+		{% if gender == 1 %}
+			{% if category %}
+				{% if category.gender == 1 %}
+				<a href="{{ path('ss_category_gender', {'gender' : 'mens', 'id' : '1'}) }}">Pria</a> —
+					<a class="active" href="{{ path('ss_category_show', {'id': category.id, 'slug' : category.slug, 'gender' : 'mens', 'genid' : '1' }) }}">{{ category.name }} </a>
+					
+					</div>
+					<!--END BREADCRUMB-->
+					<h1>{{ category.name }}</h1>
+				{% endif %}
+			{% else %}
+			<a class="active" href="{{ path('ss_category_gender', {'gender' : 'mens', 'id' : '1'}) }}">Pria</a>
+			</div>
+			<!--END BREADCRUMB-->
+			<h1>Pria</h1>
+			{% endif %}
+		{% else %}
+			{% if category %}
+				{% if category.gender == 2 %}
+				<a href="{{ path('ss_category_gender', {'gender' : 'womens', 'id' : '2'}) }}">Wanita</a> —
+					<a class="active" href="{{ path('ss_category_show', {'id': category.id, 'slug' : category.slug, 'gender' : 'womens', 'genid' : '2' }) }}">{{ category.name }} </a>
+					</div>
+					<!--END BREADCRUMB-->
+					<h1>{{ category.name }}</h1>
+				{% endif %}
+			{% else %}
+			<a class="active" href="{{ path('ss_category_gender', {'gender' : 'womens', 'id' : '2'}) }}">Wanita</a>
+					</div>
+					<!--END BREADCRUMB-->
+					<h1>Wanita</h1>
+			{% endif %}
+		{% endif %}
+<section class="product-grid twelve columns alpha omega">
+		{% for entity in entities %}
+		{% if loop.index%3 == 0 %}
+		<div class="four columns omega">
+		{% elseif loop.index%2 == 0 %}
+		<div class="four columns ">
+		{% else %}
+		<div class="four columns alpha">
+		{% endif %}
+			<!---<a href="http://simpletheme.myshopify.com/collections/all-products/products/blue-ripped-jeans" id="product-1" class="animated fadeInUpBig">-->
+			<a href="{{ path('ss_product_show', {'id': entity.id, 'category' : entity.categories.slug, 'product' : entity.namaslug }) }}">
+				<img src="{{ asset('uploads/products/index_') }}{{ entity.foto }}" alt="{{ entity.nama }}" class="product">
+				<h3>{{ entity.nama }}</h3>
+				<h4>Rp {{ entity.cost }} </h4>
+			</a>
+		</div>
+		{% if loop.index%3 == 0 %}
+		<br class="clear">
+		{% endif %}
+		{% endfor %}
+</section>
+	{% endblock %}
+{% block page %}
+	<div class="navigation">
+		{{ knp_pagination_render(entities) }}
+		</div>
+{% endblock %}
+

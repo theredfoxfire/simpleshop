@@ -1,0 +1,34 @@
+ss_cart:
+    path:     /
+    defaults: { _controller: "SsSsBundle:Cart:index" }
+
+ss_cart_show:
+    path:     /show
+    defaults: { _controller: "SsSsBundle:Cart:show" }
+
+ss_cart_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:Cart:new" }
+
+ss_cart_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:Cart:create" }
+    requirements: { _method: post }
+
+ss_cart_edit:
+    path:     /{token}/edit
+    defaults: { _controller: "SsSsBundle:Cart:edit" }
+
+ss_cart_update:
+    path:     /update
+    defaults: { _controller: "SsSsBundle:Cart:update" }
+    requirements: { _method: get|put }
+
+ss_cart_delete:
+    path:     /{token}/{id}/delete
+    defaults: { _controller: "SsSsBundle:Cart:delete" }
+    requirements: { _method: get|delete }
+ss_cart_remove:
+    path:     /{token}/{id}/remove
+    defaults: { _controller: "SsSsBundle:Cart:remove" }
+    requirements: { _method: get|delete }

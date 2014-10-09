@@ -1,0 +1,46 @@
+Ss\SsBundle\Entity\Orderer:
+ type: entity
+ repositoryClass: Ss\SsBundle\Repository\OrdererRepository
+ table: orderer
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  nama:
+   type: string
+   length: 255
+  email:
+   type: string
+   length: 255
+   unique: true
+  phone:
+   type: string
+   length: 50
+  kode_pos:
+   type: integer
+   length: 7
+  alamat:
+   type: text
+  token:
+   type: string
+   length: 255
+   unique: true
+  is_activated:
+   type: boolean
+   nullable: true
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+  password:
+   type: string
+   length: 255
+ oneToMany:
+  pesanans:
+   targetEntity: Pesanan
+   mappedBy: orderers
+ lifecycleCallbacks:
+  prePersist: [ setCreatedAtValue, setTokenValue ]
+  preUpdate: [ setUpdatedAtValue ]

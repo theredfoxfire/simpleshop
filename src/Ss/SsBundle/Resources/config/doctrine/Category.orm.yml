@@ -1,0 +1,33 @@
+Ss\SsBundle\Entity\Category:
+ type: entity
+ repositoryClass: Ss\SsBundle\Repository\CategoryRepository
+ table: category
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  name:
+   type: string
+   length: 255
+   unique: true
+  slug:
+   type: string
+   length: 255
+   unique: true
+   nullable: true
+  gender:
+   type: integer
+   length: 1
+   nullable: true
+ oneToMany:
+  products:
+   targetEntity: Product
+   mappedBy: categories
+ manyToMany:
+  affiliates:
+   targetEntity: Affiliate
+   mappedBy: categories
+ lifecycleCallbacks:
+  prePersist: [ setSlugValue ]
+  preUpdate: [ setSlugValue ]

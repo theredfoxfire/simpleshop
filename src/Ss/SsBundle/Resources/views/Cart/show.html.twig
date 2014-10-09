@@ -1,0 +1,105 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content%}
+
+<!--START BREADCRUMB-->
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product', {}) }}">Home</a> —
+		<a href="{{ path('ss_cart_show', {}) }}" class="active">Keranjang</a>
+</div>
+<!--END BREADCRUMB-->
+<h1>Keranjang Ku</h1>
+{% for flashMessage in app.session.flashbag.get('qty') %}
+						<div class="flash_notice">
+							<b><font color="red">{{ flashMessage }}</font></b>
+						</div>
+					{% endfor %}
+<section id="cart">
+	
+	<form action="{{ path('ss_cart_update') }}" method="get">
+		<!--START CART CONTENTS-->
+		<div class="twelve columns alpha omega">
+			<!-- START HEADERS-->
+			<div class="headers clearfix">
+				<div class="six columns alpha description">
+					Deskripsi
+				</div>
+				<div class="two columns price desktop">
+					Harga
+				</div>
+				<div class="one columns quantity desktop">
+					Jumlah
+				</div>
+				<div class="two columns total desktop">
+					<span>Sub Total</span>
+				</div>
+			</div>
+			<!-- END HEADERS-->
+			{% for entity in countcart %}   
+			<!-- START ROW-->
+			<div class="row">
+				<div class="six columns alpha description">
+					<img src="{{ asset('uploads/products/mini_') }}{{ entity.products.foto }}" alt="{{ entity.products.nama }}">
+					<div class="info">
+						<div class="mobile" align="right">
+							<a href="{{ path('ss_cart_remove', {'token': entity.token, 'id': entity.products.id }) }}"><font color="bd0f0f" size="5">x</font></a>
+						</div>
+						<h3><a href="{{ path('ss_product_show', {'id': entity.products.id, 'category' : entity.products.categories.slug, 'product' : entity.products.namaslug }) }}">{{ entity.products.nama }}</a></h3>
+						<h4>{% if entity.products.categories.gender == 1 %}
+									Pria
+								{% else %}
+									Wanita
+								{% endif %}
+						</h4>
+						<p>{{ entity.products.description }}</p>
+						
+					</div>
+				</div>
+				<div class="two columns price desktop">
+					Rp {{ entity.products.cost }}
+				</div>
+				<div class="one columns quantity tr">
+					<input name="{{ entity.token }}" id="{{ entity.token }}" value="{{ entity.qty }}" type="text" onkeypress='return harusangka(event)'>
+					<p class="mobile">x Rp {{ entity.products.cost }} = Rp {{ entity.totalcost }}</p>
+				</div>
+				<div class="two columns total desktop">
+					<span> Rp {{ entity.totalcost }}</span>
+				</div>
+				<div class="one column remove omega desktop">
+					<a href="{{ path('ss_cart_remove', {'token': entity.token, 'id': entity.products.id }) }}"><font color="bd0f0f" size="5">x</font></a>
+				</div>
+			</div>
+			<!-- END ROW-->
+			{% endfor %}
+		</div>
+		<!--END CART CONTENTS-->
+		<br class="clear">
+		<!--START TOTAL-->
+		
+		<div class="twelve columns alpha omega row">
+			<div class="six columns alpha continue-shopping"><a href="{{path('ss_product',{})}}">« Lanjutkan belanja</a></div>
+			<div class="six columns omega cart total">
+			<h2 align="right" >Ongkos kirim: Rp {{ ongkir }}</h2>
+			<h2>Total tagihan: Rp {{ bill }}</h2></div>
+		</div>
+		<!--END TOTAL-->
+		<br class="clear">
+		<!-- START ACTIONS -->
+		<div class="twelve columns alpha omega">
+			<div class="six columns alpha">
+				<textarea id="note" name="note" placeholder="Tambahkan catatan untuk pesanan Anda..."></textarea>
+			</div>
+			<div class="six columns omega actions">
+		 		<input id="update" name="update" value="Update" type="submit">
+		 		<input id="lanjut" name="lanjut" value="Check out" type="submit">
+			</div>
+		</div>
+		<!-- END ACTIONS <input id="checkout" name="checkout" value="Check Out" type="submit"> -->
+	</form>
+	
+</section>
+			<br class="clear">
+{% endblock %}

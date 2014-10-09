@@ -1,0 +1,35 @@
+ss_product:
+    path:     /
+    defaults: { _controller: "SsSsBundle:Product:index" }
+
+ss_product_show:
+    path:     /{category}/{id}/{product}/show
+    defaults: { _controller: "SsSsBundle:Product:show" }
+    requirements:
+     id: \d+
+
+ss_product_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:Product:new" }
+
+ss_product_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:Product:create" }
+    requirements: { _method: post }
+
+ss_product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SsSsBundle:Product:edit" }
+
+ss_product_update:
+    path:     /{id}/update
+    defaults: { _controller: "SsSsBundle:Product:update" }
+    requirements: { _method: post|put }
+
+ss_product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SsSsBundle:Product:delete" }
+    requirements: { _method: post|delete }
+ss_product_search:
+    pattern: /search
+    defaults: { _controller: "SsSsBundle:Product:search" }

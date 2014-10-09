@@ -1,0 +1,36 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+
+{% block content %}
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product') }}" class="active">Home</a>
+</div>
+<h1>Semua Produk</h1>
+<section class="product-grid twelve columns alpha omega">
+		{% for entity in entities %}
+		{% if loop.index%3 == 0 %}
+		<div class="four columns omega">
+		{% elseif loop.index%2 == 0 %}
+		<div class="four columns ">
+		{% else %}
+		<div class="four columns alpha">
+		{% endif %}
+			<!---<a href="http://simpletheme.myshopify.com/collections/all-products/products/blue-ripped-jeans" id="product-1" class="animated fadeInUpBig">-->
+			<a href="{{ path('ss_product_show', {'id': entity.id, 'category' : entity.categories.slug, 'product' : entity.namaslug }) }}">
+				<img src="{{ asset('uploads/products/index_') }}{{ entity.foto }}" alt="{{ entity.nama }}" class="product">
+				<h3>{{ entity.nama }}</h3>
+				<h4>Rp {{ entity.cost }} </h4>
+			</a>
+		</div>
+		{% if loop.index%3 == 0 %}
+		<br class="clear">
+		{% endif %}
+		{% endfor %}
+</section>
+	{% endblock %}
+{% block page %}
+	<div class="navigation">
+		{{ knp_pagination_render(entities) }}
+		</div>
+{% endblock %}
+

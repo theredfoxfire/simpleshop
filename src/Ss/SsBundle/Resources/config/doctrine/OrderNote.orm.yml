@@ -1,0 +1,35 @@
+Ss\SsBundle\Entity\OrderNote:
+ type: entity
+ table: order_note
+ repositoryClass: Ss\SsBundle\Repository\OrderNoteRepository
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  notice:
+   type: text
+  token:
+   type: string
+   length: 255
+   unique: true
+  orderer_id:
+   type: integer
+  session_id:
+   type: string
+   length: 255
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+ manyToOne:
+  orderers:
+   targetEntity: Orderer
+   inversedBy: notes
+   joinColumn:
+    name: orderer_id
+    referencedColumnName: id
+ lifecycleCallbacks:
+  prePersist: [ setCreatedAtValue, setTokenValue ]
+  preUpdate: [ setUpdatedAtValue ]

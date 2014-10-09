@@ -1,0 +1,37 @@
+ss_pesanan:
+    path:     /
+    defaults: { _controller: "SsSsBundle:Pesanan:index" }
+    
+ss_pesanan_check:
+    path:     /check
+    defaults: { _controller: "SsSsBundle:Pesanan:check" }
+
+ss_pesanan_show:
+    path:     /{id}/show
+    defaults: { _controller: "SsSsBundle:Pesanan:show" }
+
+ss_pesanan_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:Pesanan:new" }
+ss_pesanan_check:
+    path:     /check
+    defaults: { _controller: "SsSsBundle:Pesanan:check" }
+
+ss_pesanan_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:Pesanan:create" }
+    requirements: { _method: post }
+
+ss_pesanan_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SsSsBundle:Pesanan:edit" }
+
+ss_pesanan_update:
+    path:     /{id}/update
+    defaults: { _controller: "SsSsBundle:Pesanan:update" }
+    requirements: { _method: post|put }
+
+ss_pesanan_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SsSsBundle:Pesanan:delete" }
+    requirements: { _method: post|delete }

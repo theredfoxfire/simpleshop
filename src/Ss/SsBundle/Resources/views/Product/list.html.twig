@@ -1,0 +1,27 @@
+<div id="breadcrumb" class="desktop">
+	<a href="{{ path('ss_product') }}">Home</a> — 
+	<a href="{{ path('ss_product_search') }}" class="active">Pencarian</a>
+</div>
+<h1>Hasil Pencarian</h1>
+<!--END BREADCRUMB--><section class="product-grid twelve columns alpha omega" style="border-bottom: 1px solid #E8E8E8;">
+{% for entity in products %}
+		{% if loop.index%3 == 0 %}
+		<div class="four columns omega">
+		{% elseif loop.index%2 == 0 %}
+		<div class="four columns ">
+		{% else %}
+		<div class="four columns alpha">
+		{% endif %}
+			<!---<a href="http://simpletheme.myshopify.com/collections/all-products/products/blue-ripped-jeans" id="product-1" class="animated fadeInUpBig">-->
+			<a href="{{ path('ss_product_show', {'id': entity.id, 'category' : entity.categories.slug, 'product' : entity.namaslug }) }}">
+				<img src="{{ asset('uploads/products/index_') }}{{ entity.foto }}" alt="{{ entity.nama }}" class="product">
+				<h3>{{ entity.nama }}</h3>
+				<h4>Rp {{ entity.cost }} </h4>
+			</a>
+		</div>
+		{% if loop.index%3 == 0 %}
+		<br class="clear">
+		{% endif %}
+		{% endfor %}
+</section>
+<br class="clear">

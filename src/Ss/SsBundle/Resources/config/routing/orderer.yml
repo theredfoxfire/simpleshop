@@ -1,0 +1,42 @@
+ss_orderer:
+    path:     /
+    defaults: { _controller: "SsSsBundle:Orderer:index" }
+
+ss_orderer_show:
+    path:     /{id}/show
+    defaults: { _controller: "SsSsBundle:Orderer:show" }
+
+ss_orderer_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:Orderer:new" }
+ss_orderer_newemail:
+    path:     /newemail
+    defaults: { _controller: "SsSsBundle:Orderer:email" }
+ss_orderer_emailorder:
+    path:     /emailorder
+    defaults: { _controller: "SsSsBundle:Orderer:oldemail" }
+    requirements: { _method: get|put }
+ss_orderer_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:Orderer:create" }
+    requirements: { _method: post }
+
+ss_orderer_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SsSsBundle:Orderer:edit" }
+
+ss_orderer_update:
+    path:     /{id}/update
+    defaults: { _controller: "SsSsBundle:Orderer:update" }
+    requirements: { _method: post|put }
+
+ss_orderer_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SsSsBundle:Orderer:delete" }
+    requirements: { _method: post|delete }
+ss_orderer_confirm:
+    path:     /{pesanan}/{orderer}/confirm
+    defaults: { _controller: "SsSsBundle:Orderer:confirm" }
+ss_orderer_thanks:
+    path:     /thanks
+    defaults: { _controller: "SsSsBundle:Orderer:thanks" }

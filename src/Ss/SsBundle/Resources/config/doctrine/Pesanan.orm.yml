@@ -1,0 +1,44 @@
+Ss\SsBundle\Entity\Pesanan:
+ type: entity
+ repositoryClass: Ss\SsBundle\Repository\PesananRepository
+ table: pesanan
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  token:
+   type: string
+   length: 255
+   unique: true
+  is_payyed:
+   type: boolean
+   nullable: true
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+  session:
+   type: string
+   length: 255
+  notes:
+   type: text
+   nullable: true
+  is_confirm:
+   type: boolean
+   nullable: true
+ manyToOne:
+  orderers:
+   targetEntity: Orderer
+   inversedBy: pesanans
+   joinColumn:
+    name: orderer_id
+    referencedColumnName: id
+ oneToMany:
+  details:
+   targetEntity: PesananDetail
+   mappedBy: pesanans
+ lifecycleCallbacks:
+  prePersist: [ setCreatedAtValue, setTokenValue ]
+  preUpdate: [ setUpdatedAtValue ]

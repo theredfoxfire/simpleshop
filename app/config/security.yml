@@ -1,0 +1,33 @@
+security:
+    encoders:
+        Ss\SsBundle\Entity\Orderer: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        main:
+            entity: { class: Ss\SsBundle\Entity\Orderer, property: email }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+ 
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            logout:
+                path:   /logout
+                target: /
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+                default_target_path: ss_product
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/ss_pesanan, roles: ROLE_MEMBER }

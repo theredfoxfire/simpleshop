@@ -1,0 +1,358 @@
+<?php
+
+namespace Ss\SsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Order
+ */
+class Order
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $qty;
+
+    /**
+     * @var string
+     */
+    private $token;
+
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+    /**
+     * @var \Ss\SsBundle\Entity\Product
+     */
+    private $products;
+
+    /**
+     * @var \Ss\SsBundle\Entity\Orderer
+     */
+    private $orderers;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set qty
+     *
+     * @param integer $qty
+     * @return Order
+     */
+    public function setQty($qty)
+    {
+        $this->qty = $qty;
+
+        return $this;
+    }
+
+    /**
+     * Get qty
+     *
+     * @return integer 
+     */
+    public function getQty()
+    {
+        return $this->qty;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Order
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string 
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Order
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param \DateTime $updatedAt
+     * @return Order
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Set products
+     *
+     * @param \Ss\SsBundle\Entity\Product $products
+     * @return Order
+     */
+    public function setProducts(\Ss\SsBundle\Entity\Product $products = null)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Ss\SsBundle\Entity\Product 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set orderers
+     *
+     * @param \Ss\SsBundle\Entity\Orderer $orderers
+     * @return Order
+     */
+    public function setOrderers(\Ss\SsBundle\Entity\Orderer $orderers = null)
+    {
+        $this->orderers = $orderers;
+
+        return $this;
+    }
+
+    /**
+     * Get orderers
+     *
+     * @return \Ss\SsBundle\Entity\Orderer 
+     */
+    public function getOrderers()
+    {
+        return $this->orderers;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setTokenValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+    /**
+     * @var boolean
+     */
+    private $is_pay;
+
+
+    /**
+     * Set is_pay
+     *
+     * @param boolean $isPay
+     * @return Order
+     */
+    public function setIsPay($isPay)
+    {
+        $this->is_pay = $isPay;
+
+        return $this;
+    }
+
+    /**
+     * Get is_pay
+     *
+     * @return boolean 
+     */
+    public function getIsPay()
+    {
+        return $this->is_pay;
+    }
+    /**
+     * @var boolean
+     */
+    private $is_payed;
+
+
+    /**
+     * Set is_payed
+     *
+     * @param boolean $isPayed
+     * @return Order
+     */
+    public function setIsPayed($isPayed)
+    {
+        $this->is_payed = $isPayed;
+
+        return $this;
+    }
+
+    /**
+     * Get is_payed
+     *
+     * @return boolean 
+     */
+    public function getIsPayed()
+    {
+        return $this->is_payed;
+    }
+    /**
+     * @var boolean
+     */
+    private $is_payyed;
+
+
+    /**
+     * Set is_payyed
+     *
+     * @param boolean $isPayyed
+     * @return Order
+     */
+    public function setIsPayyed($isPayyed)
+    {
+        $this->is_payyed = $isPayyed;
+
+        return $this;
+    }
+
+    /**
+     * Get is_payyed
+     *
+     * @return boolean 
+     */
+    public function getIsPayyed()
+    {
+        return $this->is_payyed;
+    }
+    /**
+     * @var boolean
+     */
+    private $is_terbayar;
+
+
+    /**
+     * Set is_terbayar
+     *
+     * @param boolean $isTerbayar
+     * @return Order
+     */
+    public function setIsTerbayar($isTerbayar)
+    {
+        $this->is_terbayar = $isTerbayar;
+
+        return $this;
+    }
+
+    /**
+     * Get is_terbayar
+     *
+     * @return boolean 
+     */
+    public function getIsTerbayar()
+    {
+        return $this->is_terbayar;
+    }
+    /**
+     * @var boolean
+     */
+    private $is_publish;
+
+
+    /**
+     * Set is_publish
+     *
+     * @param boolean $isPublish
+     * @return Order
+     */
+    public function setIsPublish($isPublish)
+    {
+        $this->is_publish = $isPublish;
+
+        return $this;
+    }
+
+    /**
+     * Get is_publish
+     *
+     * @return boolean 
+     */
+    public function getIsPublish()
+    {
+        return $this->is_publish;
+    }
+}

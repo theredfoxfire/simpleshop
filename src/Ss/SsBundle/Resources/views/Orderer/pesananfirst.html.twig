@@ -1,0 +1,7 @@
+Terima kasih, telah berbelanja di SimpleShop.com, berikut adalah daftar pesanan Anda:<br/><br/>
+{% for cart in carts %}
+{{ loop.index }}. {{ cart.products.nama }}: {{cart.qty}} x Rp {{cart.products.cost}} = Rp {{ cart.totalcost }}<br>
+{% endfor %}<br/>
+Ongkos kirim: Rp {{ ongkir }}<br>
+Total tagihan: Rp {{ bill }}<br><br/><br/>
+Silahkan klik url ini untuk melakukan konfirmasi atas pesanan Anda. http://localhost/simpleshop/web/app_dev.php/ss_orderer/{{ pesanan }}/{{ orderer }}/confirm

@@ -1,0 +1,65 @@
+{% extends 'SsSsBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="twelve columns alpha omega" style="border-bottom: 1px solid #E8E8E8;">
+  <div class="row" style="border-bottom: 1px solid #E8E8E8;">
+    <h1>Anda membeli...</h1>
+    <table id="thumbs" cellpadding="0" cellspacing="0">
+      <tbody>
+      {% for entity in countcart %}   
+      {% if loop.index%6 == 1 %}
+      <tr class="desktop">
+      {% endif %}
+            <td>
+                <img src="{{ asset('uploads/products/mini_') }}{{ entity.products.foto }}" alt="{{ entity.products.nama }}" >
+				<h3 class="plisthead" title="{{ entity.products.nama }}">{{ entity.products.nama }} <br/> [{{ entity.qty }}&nbsp;x Rp {{ entity.products.cost }}] <br>Rp {{ entity.totalcost }}</h3>
+            </td>
+      {% if loop.index%6 == 0 %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% for entity in countcart %}   
+      {% if loop.index%2 == 1 %}
+      <tr class="mobile">
+      {% endif %}
+            <td>
+                <img src="{{ asset('uploads/products/mini_') }}{{ entity.products.foto }}" alt="{{ entity.products.nama }}" >
+				<h3 class="plisthead" title="{{ entity.products.nama }}">{{ entity.products.nama }} <br/> [{{ entity.qty }}&nbsp;x Rp {{ entity.products.cost }}]<br>Rp {{ entity.totalcost }}</h3>
+            </td>
+      {% if loop.index%2 == 0 %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody></table>
+  </div>
+	<br class="clear">
+			
+			<div class="six columns alpha continue-shopping"><a href="{{path('ss_product',{})}}">« Lanjutkan belanja</a></div>
+			<div class="six columns omega cart total">
+				<h2 align="right">Ongkos kirim: Rp {{ ongkir }}</h2>
+				<h2 align="right">Total tagihan: Rp {{ bill }}</h2>
+			</div>
+	</div>
+  <br class="clear">
+    <h1>Masukan alamat email untuk memesan:</h1>
+
+    <form action="{{ path('ss_orderer_emailorder') }}" method="get">
+		<b>Email:</b><br>
+		<input type="email" id="email" name="email" value="{{ email }}" required="required"/><br>
+		
+		<input id="smail" name="smail" value="Submit" type="submit" class="btn"> &nbsp; <a href="{{ path('ss_cart_show', {}) }}">Kembali</a>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+    </li>
+</ul>
+<script language="JavaScript">
+	function mess(){
+		document.getElementById("whats").innerHTML= "Kata sandi ini akan anda gunakan untuk melihat pesanan Anda,<br>seperti melakukan konfirmasi pembayaran, atau melihat status pengriman barang.<br><a href='#' onmouseover='tutup()' id='close'>Tutup</a>";
+	}
+	function tutup(){
+		document.getElementById("whats").innerHTML="";
+	}
+</script>
+{% endblock %}

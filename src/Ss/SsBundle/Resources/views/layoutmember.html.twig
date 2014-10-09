@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]-->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>
+    SimpleShop.com-Belanja online, simple aja!
+  </title>
+	<meta charset="utf-8">
+	
+	   <meta name="description" content="simpleshop.com">
+	{% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/ssss/css/theme.css') }}" type="text/css" media="all" />
+    {% endblock %}
+    <!--<script src="{{ asset('bundles/ssss/js/shopify_stats.js') }}" async="" type="text/javascript"></script>-->
+    <script src="{{ asset('bundles/ssss/js/dc.js') }}" async="" type="text/javascript"></script>
+    <script src="{{ asset('bundles/ssss/js/jquery_002.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/ssss/js/jquery_004.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/ssss/js/jquery.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/ssss/js/option_selection.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/ssss/js/jquery_003.js') }}" type="text/javascript"></script>
+	
+</head>
+
+<div id="js">
+	
+</div>
+<body id="simple-ecommerce-theme-demo-store" class="template-index">
+	
+   <!--START HEADER-->
+	<header>
+		<!--START CONTAINER-->
+		<!--START CONTAINER-->
+		<div class="container upper">
+			<!--START SIDEBAR-->
+			<div class="three columns product-search-wrapper">
+				<div id="product-search">
+					
+					<br class="clear">
+				</div>
+			</div>
+			<!--END SIDEBAR f4f4f4-->
+			<!--START TOP NAV-->
+			<div class="seven columns offset-by-one desktop">
+				
+			</div>
+			<!--END TOP NAV-->
+			<!--START MINICART-->
+			<div class="five columns minicart-wrapper">
+				<div id="minicart">
+					<a href="{{ path('logout') }}" class="mobile">Log Out</a>
+					<a href="{{ path('logout') }}" class="desktop">Log Out</a>
+				</div>
+			</div>
+			<!--END MINI CART-->
+		</div>
+		<!--END CONTAINER-->
+
+		<!--START CONTAINER-->
+		<div class="container lower">
+			<div class="sixteen columns">
+				<div class="table logo-tagline">
+					<div class="table-cell">
+						<h1 id="logo">
+							<a href="{{ path('ss_product') }}">
+								
+								<img src="{{ asset('bundles/ssss/images/logo.png') }}" alt="SimpleShop.com">
+								
+							</a>
+						</h1>
+					</div>
+
+					<div class="table-cell">
+						<div id="tagline" class="desktop">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+  	<!--START HEADER-->
+	<!--START CONTAINER-->
+	<div class="container">
+		<!--START SIDEBAR-->
+		<div id="sidebar" class="three columns">
+			<nav>
+
+				<a href="#" id="toggle-menu" class="mobile"><span>Menu</span></a>
+
+				<ul id="main-menu" class="accordion">
+						<li><a href="{{ path('ss_pesanan_check') }}">Konfirmasi Pembayaran</a></li>
+						<li><a href="{{ path('ss_pesanan_check') }}">Pengembalian Barang</a></li>
+						<li><a href="http://simpleshop.com/blogs/news">Blog</a></li>
+						
+						<li><a href="http://simpleshop.com/pages/contact-us">Hubungi Kami</a></li>
+						
+					
+
+
+
+				</ul>
+				<div id="social">
+
+
+					<a href="http://www.facebook.com/shopify" target="_blank" class="facebook "></a>
+					<a href="http://www.twitter.com/shopify" target="_blank" class="twitter "></a>
+					<a href="http://www.instagram.com/shopify" target="_blank" class="instagram "></a>
+					<a href="http://www.pinterest.com/shopify" target="_blank" class="pinterest "></a>
+					
+					
+					
+					<a href="http://simpleshop.com/blogs/news.atom" target="_blank" class="rss "></a>
+
+
+				</div>
+			</nav>
+		</div>
+		<!--END SIDEBAR-->
+		
+		<!--START MAIN-->
+		<div id="main" class="twelve columns offset-by-one">
+			
+			<div id="page-content">  
+<br>
+<div id="products">
+</div>
+{% block content %}
+	{% endblock %}
+
+<center><h1>
+{% block page %}
+
+{% endblock %}
+
+
+</h1></center>
+			<br class="clear">
+			</div>
+		</div>
+		<!--END MAIN-->
+		<br class="clear">
+		<!--START FOOTER-->
+		<footer>
+			<section class="upper">
+
+				<!--START NAV-->
+				<div class="three columns ">
+					<nav>
+						<h2></h2>
+						
+					</nav>
+				</div>
+				<!--END NAV-->
+
+				<!--START PAGE CONTENT-->
+				<div class="eight offset-by-one columns">
+					<div id="footer-content">
+
+						
+						<h2>Panduan mengenai hak dan perlindungan pembeli</h2>
+						<div><p>Kami menjamin kenyamanan anda sebagai pelanggan dalam bertransaksi di toko online kami, klik <a href="http://simpleshop.com/pages/pelanggan" target="_blank">di sini</a> untuk mengetahui lebih lanjut mengenai hak dan kewajiban Anda. <br>
+						Jika anda ingin mengetahui kebijakan dan ketentuan kami, lihat <a href="http://simpleshop.com/pages/privacy-policy" title="Ketentuan & Privasi" target="_blank">Ketentuan & Privasi</a>.&nbsp;</p>
+						
+<p class="adr"><span class="street-address">Atau datanglah ke kantor kami di, <br>
+Jalan Kesuksesan No. 88</span><br><span class="locality">Bandung</span>,&nbsp;
+<span class="region">Jawa Barat</span><br><span class="postal-code">40256</span> <span class="country-name">Indonesia</span>,
+<span class="tel">Telephon:&nbsp;(555) 867 5309</span>
+<span class="tel">Mobile (Indosat IM3):&nbsp;0856 2488 9988</span>
+
+</p></div>
+
+						
+
+						
+					</div>
+				</div>
+				<!--END PAGE CONTENT-->
+
+				<!--START MAILING LIST / OR CREDIT CARDS-->
+				<div class="three columns offset-by-one">
+					
+					
+<div id="payment-methods">
+<img src="{{ asset('bundles/ssss/images/cc-amex.png') }}" alt="We accept Amex">
+<img src="{{ asset('bundles/ssss/images/cc-discover.png') }}" alt="We accept Discover">
+<img src="{{ asset('bundles/ssss/images/cc-visa.png') }}" alt="We accept Visa">
+ <img src="{{ asset('bundles/ssss/images/cc-mastercard.png') }}" alt="We accept Mastercard">
+<img src="{{ asset('bundles/ssss/images/cc-maestro.png') }}" alt="We accept Maestro">
+<img src="{{ asset('bundles/ssss/images/cc-cirrus.png') }}" alt="We accept Cirrus">
+<img src="{{ asset('bundles/ssss/images/cc-paypal.png') }}" alt="You can check out using Paypal">
+<img src="{{ asset('bundles/ssss/images/cc-google.png') }}" alt="You can check out using Google Wallet">
+</div>
+
+					
+				</div>
+				<!--END MAILING LIST / CREDIT CARDS-->
+
+				<br class="clear">
+			</section>
+			<section class="lower">
+				<div class="nine columns">
+					<div class="legals">
+						Copyright © {{ "now"|date('Y') }} SimpleShop.com <a href="http://www.shopify.ca/" target="_blank">Ecommerce template design by Shopify</a>.
+					</div>
+				</div>
+				<div class="six columns offset-by-one">
+					
+					<nav>
+						
+					        <a href="http://simpleshop.com/search" title="Cari">Cari</a>
+					    
+					        <a href="http://simpleshop.com/pages/about-us" title="Tentang Kami">Tentang Kami</a>
+					    
+					        <a href="http://simpleshop.com/pages/privacy-policy" title="Ketentuan & Privasi">Ketentuan & Privasi</a>
+					    
+					</nav>
+					
+				</div>
+			</section>
+			<br class="clear">
+		</footer>
+		<!--END FOOTER-->
+	</div>
+	<!-- END CONTAINER-->
+<script language="JavaScript">
+function harusangka(jumlah){
+  var karakter = (jumlah.which) ? jumlah.which : event.keyCode
+  if (karakter > 31 && (karakter < 48 || karakter > 57))
+    return false;
+
+  return true;
+}
+</script>
+</body></html>

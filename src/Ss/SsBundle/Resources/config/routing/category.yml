@@ -1,0 +1,33 @@
+ss_category:
+    path:     /
+    defaults: { _controller: "SsSsBundle:Category:index" }
+
+ss_category_show:
+    path:     /{gender}/{genid}/{slug}/{id}/show
+    defaults: { _controller: "SsSsBundle:Category:show" }
+
+ss_category_new:
+    path:     /new
+    defaults: { _controller: "SsSsBundle:Category:new" }
+
+ss_category_create:
+    path:     /create
+    defaults: { _controller: "SsSsBundle:Category:create" }
+    requirements: { _method: post }
+
+ss_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SsSsBundle:Category:edit" }
+
+ss_category_update:
+    path:     /{id}/update
+    defaults: { _controller: "SsSsBundle:Category:update" }
+    requirements: { _method: post|put }
+
+ss_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SsSsBundle:Category:delete" }
+    requirements: { _method: post|delete }
+ss_category_gender:
+ path: /{gender}/{id}/all
+ defaults: { _controller: "SsSsBundle:Category:gender" }

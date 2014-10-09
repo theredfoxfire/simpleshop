@@ -1,0 +1,62 @@
+Ss\SsBundle\Entity\Product:
+ type: entity
+ repositoryClass: Ss\SsBundle\Repository\ProductRepository
+ table: product
+ id:
+  id:
+   type: integer
+   generator: { strategy: AUTO }
+ fields:
+  nama:
+   type: string
+   length: 255
+   unique: true
+  description:
+   type: text
+  harga:
+   type: integer
+  foto:
+   type: string
+   length: 255
+  stock:
+   type: integer
+   nullable: true
+  ongkir:
+   type: integer
+   nullable: true
+  is_publish:
+   type: boolean
+   nullable: true
+  token:
+   type: string
+   length: 255
+   unique: true
+  created_at:
+   type: datetime
+  updated_at:
+   type: datetime
+   nullable: true
+ oneToMany:
+  carts:
+   targetEntity: Cart
+   mappedBy: products
+  fotos:
+   targetEntity: ProductFoto
+   mappedBy: products
+  details:
+   targetEntity: PesananDetail
+   mappedBy: products
+ manyToOne:
+  categories:
+   targetEntity: Category
+   inversedBy: products
+   joinColumn:
+    name: category_id
+    referencedColumnName: id
+ lifecycleCallbacks:
+  prePersist: [ preUpload, setCreatedAtValue, setTokenValue, setIsPublishValue ]
+  preUpdate: [ removeUploaded, preUpload, setUpdatedAtValue ]
+  postPersist: [ upload, updateLuceneIndex ]
+  postUpdate: [ upload, updateLuceneIndex ]
+  postRemove: [ removeUpload, deleteLuceneIndex ]
+  

@@ -1,0 +1,30 @@
+ss_ss_ss_orderer:
+    resource: "@SsSsBundle/Resources/config/routing/orderer.yml"
+    prefix:   /ss_orderer
+
+ss_ss_ss_pesanan:
+    resource: "@SsSsBundle/Resources/config/routing/pesanan.yml"
+    prefix:   /ss_pesanan
+
+ss_ss_homepage:
+    path:     /
+    defaults: { _controller: SsSsBundle:Product:index }
+SsSsBundle_ss_product:
+        resource: "@SsSsBundle/Resources/config/routing/product.yml"
+        prefix:   /ss_product
+SsSsBundle_ss_category:
+        resource: "@SsSsBundle/Resources/config/routing/category.yml"
+        prefix:   /ss_category
+SsSsBundle_ss_foto:
+        resource: "@SsSsBundle/Resources/config/routing/productfoto.yml"
+        prefix:   /ss_foto
+SsSsBundle_ss_cart:
+        resource: "@SsSsBundle/Resources/config/routing/cart.yml"
+        prefix:   /ss_cart
+login:
+ pattern: /login
+ defaults: {_controller: SsSsBundle:Default:login}
+login_check:
+ pattern: /login_check
+logout:
+ pattern: /logout
