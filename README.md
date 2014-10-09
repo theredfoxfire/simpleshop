@@ -1,6 +1,6 @@
 simpleshop
 ========================
-Hey bud, i know this one is so far to call it e-comerce, but like the name its just simple shop to sell your good online. enjoy it!
+Hey bud, i know this one is so far to call it e-commerce, but like the name its just simple shop to sell your good online. enjoy it!
 
 Symfony Standard Edition
 ========================
